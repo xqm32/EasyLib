@@ -5,7 +5,7 @@
 
 /*
  *	Author: xqm32	Date: 5/8/18
- *	File: ./getrange.h
+ *	File: ./getignore.h
  */
 
 int getignore(std::istream&, const std::size_t&);

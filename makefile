@@ -30,10 +30,13 @@ $(S3): $(S2)
 $(S2): $(S1) $(S1H)
 	g++ -c $(S1)
 	
-.PHONY: clean install
+.PHONY: clean install lib
 
 clean:
 	rm -f $(S2) $(S3) $(S4)
+
+lib: $(S3)
+	ar -d lib.a main.o
 	
 install: $(S3)
 	ar -d lib.a main.o
