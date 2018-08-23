@@ -1,65 +1,51 @@
-#
-#	Author: xqm32	Date: 5/8/18
-#	File: ./makefile
-#
+BINARY=main
+STATIC_LIB=lib.a
+SHARED_LIB=lib.so
 
-LGDIR=lib/libget
-RDDIR=lib/librd
-TSDIR=lib/libtsv
-HDIR=lib
-MAIN=main
+SOURCE_DIR=lib
+INCLUDE_DIR=include
+GET_DIR=libget
+RAND_DIR=librand
+THREAD_DIR=libthread
 
-# S: Step
-S1=$(MAIN).cpp \
-	$(LGDIR)/getafter.cpp $(LGDIR)/getbefore.cpp \
-	$(LGDIR)/getignore.cpp $(LGDIR)/getrange.cpp \
-	$(RDDIR)/rangedom.cpp $(TSDIR)/threadsv.cpp
-# H: Head File
-S1H=$(HDIR)/libget.h $(HDIR)/librd.h $(HDIR)/libtsv.h \
-	$(LGDIR)/getafter.h $(LGDIR)/getbefore.h \
-	$(LGDIR)/getignore.h $(LGDIR)/getrange.h \
-	$(RDDIR)/rangedom.h $(TSDIR)/threadsv.h
-# N: No $(MAIN)
-S1N=$(LGDIR)/getafter.cpp $(LGDIR)/getbefore.cpp \
-	$(LGDIR)/getignore.cpp $(LGDIR)/getrange.cpp \
-	$(RDDIR)/rangedom.cpp $(TSDIR)/threadsv.cpp
-S2=$(MAIN).o \
-	getafter.o getbefore.o \
-	getignore.o getrange.o \
-	rangedom.o threadsv.o
-S2N=getafter.o getbefore.o \
-	getignore.o getrange.o \
-	rangedom.o threadsv.o
-S3=lib.a
-S3N=./lib.so
-S4=$(MAIN)
+OBJECT_FILE_TARGET=OBJECT_FILE_TARGET
 
-$(S4): $(S3)
-	g++ -o $(S4) $(S3)
-$(S3): $(S2)
-	ar -r $(S3) $(S2)
-$(S2): $(S1) $(S1H)
-	g++ -c $(S1) -lpthread -std=c++17
+HGET_DIR=$(INCLUDE_DIR)/$(GET_DIR)
+HRAND_DIR=$(INCLUDE_DIR)/$(RAND_DIR)
+HTHREAD_DIR=$(INCLUDE_DIR)/$(THREAD_DIR)
 
-.PHONY: clean remake install reinstall static_lib shared_lib
+SGET_DIR=$(SOURCE_DIR)/$(GET_DIR)
+SRAND_DIR=$(SOURCE_DIR)/$(RAND_DIR)
+STHREAD_DIR=$(SOURCE_DIR)/$(THREAD_DIR)
 
+HGET_FILE=$(HGET_DIR)/*.h
+HRAND_FILE=$(HRAND_DIR)/*.h
+HTHREAD_FILE=$(HTHREAD_DIR)/*.h
+HEAD_FILE=$(INCLUDE_DIR)/*.h
+
+SGET_FILE=$(SGET_DIR)/*.cpp
+SRAND_FILE=$(SRAND_DIR)/*.cpp
+STHREAD_FILE=$(STHREAD_DIR)/*.cpp
+SOURCE_FILE=$(BINARY).cpp
+
+ALL_HFILE=$(HEAD_FILE) $(HGET_FILE) $(HRAND_FILE) $(HTHREAD_FILE)
+ALL_SFILE=$(SGET_FILE) $(SRAND_FILE) $(STHREAD_FILE)
+
+$(BINARY): $(SOURCE_FILE) $(STATIC_LIB)
+	$(CXX) -o $(BINARY) $(SOURCE_FILE) $(STATIC_LIB)
+$(STATIC_LIB): $(OBJECT_FILE_TARGET)
+	$(AR) -r $(STATIC_LIB) *.o
+$(SHARED_LIB): $(OBJECT_FILE_TARGET)
+	$(CXX) -o $(SHARED_LIB) -shared *.o
+$(OBJECT_FILE_TARGET): $(ALL_SFILE) $(ALL_HFILE)
+	$(CXX) -fPIC -c $(ALL_SFILE)
+	
+.PHONY: shared clean static_lib shared_lib
+
+shared: $(SOURCE_FILE) $(SHARED_LIB)
+	$(CXX) -o $(BINARY) $(SOURCE_FILE) ./$(SHARED_LIB)
 clean:
-	rm -f $(S2) $(S3) $(S3N) $(S4)
-
-remake: $(S3)
-	ar -d $(S3) $(MAIN).o
-	g++ -c $(MAIN).cpp
-	ar -r $(S3) $(MAIN).o
-	g++ -o $(S4) $(S3)
-
-install: $(S3N)
-	g++ -o $(S4) $(MAIN).cpp $(S3N)
-reinstall: $(S3N)
-	rm -f $(S4)
-	make install
-
-$(S3N): $(S1)
-	g++ -o $(S3N) $(S1) -shared -fPIC -lpthread -std=c++17
-
-static_lib: $(S3)
-shared_lib: $(S3N)
+	$(RM) $(BINARY) *.o *.so *.a
+	
+static_lib: $(STATIC_LIB)
+shared_lib: $(SHARED_LIB)

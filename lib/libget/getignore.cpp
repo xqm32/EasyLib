@@ -1,9 +1,4 @@
-#include "getignore.h"
-
-/*
- *	Author: xqm32	Date: 5/8/18
- *	File: ./getignore.cpp
- */
+#include "../../include/libget/getignore.h"
 
 int getignore(std::istream &_is, const std::size_t &_num)
 {

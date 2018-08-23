@@ -3,11 +3,6 @@
 #include <thread>
 #include <chrono>
 
-/*
- *	Author: xqm32	Date: 4/8/18
- *	File: ./threadsv.h
- */
-
 enum timer
 {
 	nanoseconds, microseconds, milliseconds, seconds, minutes, hours

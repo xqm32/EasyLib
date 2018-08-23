@@ -1,9 +1,4 @@
-#include "getafter.h"
-
-/*
- *	Author: xqm32	Date: 5/8/18
- *	File: ./getafter.cpp
- */
+#include "../../include/libget/getafter.h"
 
 int getafter(std::istream &_is, std::string &_str, const int &_par)
 {

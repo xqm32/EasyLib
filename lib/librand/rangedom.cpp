@@ -1,9 +1,4 @@
-#include "rangedom.h"
-
-/*
- *	Author: xqm32	Date: 5/8/18
- *	File: ./rangedom.cpp
- */
+#include "../../include/librand/rangedom.h"
 
 int init_rangedom()
 {

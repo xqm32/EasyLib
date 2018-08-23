@@ -1,11 +1,6 @@
-#include "lib/libget.h"
-#include "lib/librd.h"
-#include "lib/libtsv.h"
-
-/*
- *	Author: xqm32	Date: 5/8/18
- *	File: ./main.cpp
- */
+#include "include/flget.h"
+#include "include/flrand.h"
+#include "include/flthread.h"
 
 int main()
 {

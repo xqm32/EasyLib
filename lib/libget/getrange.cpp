@@ -1,9 +1,4 @@
-#include "getrange.h"
-
-/*
- *	Author: xqm32	Date: 5/8/18
- *	File: ./getrange.cpp
- */
+#include "../../include/libget/getrange.h"
 
 int getrange(std::istream &_is, std::string &_str, const int &_first, const int &_second)
 {

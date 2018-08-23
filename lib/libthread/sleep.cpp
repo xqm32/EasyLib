@@ -1,9 +1,4 @@
-#include "threadsv.h"
-
-/*
- *	Author: xqm32	Date: 5/8/18
- *	File: ./threadsv.cpp
- */
+#include "../../include/libthread/sleep.h"
 
 void sleep_for(const int &_time, const timer &_timer)
 {

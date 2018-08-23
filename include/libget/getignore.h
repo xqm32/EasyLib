@@ -3,11 +3,6 @@
 #include <iostream>
 #include "macro.h"
 
-/*
- *	Author: xqm32	Date: 5/8/18
- *	File: ./getignore.h
- */
-
 int getignore(std::istream&, const std::size_t&);
 
 int getignore(std::istream&, const int&);

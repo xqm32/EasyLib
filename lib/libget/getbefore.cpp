@@ -1,9 +1,4 @@
-#include "getbefore.h"
-
-/*
- *	Author: xqm32	Date: 5/8/18
- *	File: ./getbefore.cpp
- */
+#include "../../include/libget/getbefore.h"
 
 int getbefore(std::istream &_is, std::string &_str, const int &_par)
 {
