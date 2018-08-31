@@ -1,4 +1,4 @@
-#include "../../include/libget/getbefore.h"
+#include "../../include/fastget/getbefore.h"
 
 int getbefore(std::istream &_is, std::string &_str, const int &_par)
 {

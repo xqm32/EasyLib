@@ -1,4 +1,4 @@
-#include "../../include/libget/getafter.h"
+#include "../../include/fastget/getafter.h"
 
 int getafter(std::istream &_is, std::string &_str, const int &_par)
 {

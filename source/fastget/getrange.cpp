@@ -1,4 +1,4 @@
-#include "../../include/libget/getrange.h"
+#include "../../include/fastget/getrange.h"
 
 int getrange(std::istream &_is, std::string &_str, const int &_first, const int &_second)
 {

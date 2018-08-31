@@ -1,6 +1,6 @@
-#include "include/flget.h"
-#include "include/flrand.h"
-#include "include/flthread.h"
+#include "include/fastget.h"
+#include "include/fastrand.h"
+#include "include/fastthread.h"
 
 int main()
 {

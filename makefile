@@ -1,12 +1,12 @@
 BINARY=main
-STATIC_LIB=lib.a
-SHARED_LIB=lib.so
+STATIC_LIB=libfast.a
+SHARED_LIB=libfast.so
 
-SOURCE_DIR=lib
+SOURCE_DIR=source
 INCLUDE_DIR=include
-GET_DIR=libget
-RAND_DIR=librand
-THREAD_DIR=libthread
+GET_DIR=fastget
+RAND_DIR=fastrand
+THREAD_DIR=fastthread
 
 OBJECT_FILE_TARGET=OBJECT_FILE_TARGET
 

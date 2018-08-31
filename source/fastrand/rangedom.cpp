@@ -1,4 +1,4 @@
-#include "../../include/librand/rangedom.h"
+#include "../../include/fastrand/rangedom.h"
 
 int init_rangedom()
 {

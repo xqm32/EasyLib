@@ -1,4 +1,4 @@
-#include "../../include/libthread/sleep.h"
+#include "../../include/fastthread/sleep.h"
 
 void sleep_for(const int &_time, const timer &_timer)
 {
